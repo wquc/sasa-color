@@ -1,0 +1,19 @@
+* COMPUTE SASA
+*
+
+dimension chsize 200000
+bomblev -1 
+
+stream toppar.str
+set protname 1ubq
+
+read psf  card name @{protname}.psf
+read coor card name @{protname}.cor
+
+coor surf rprobe 1.4 select all end
+scalar wmain show sele all end
+
+!coor orient sele all end
+write coor pdb name @{protname}-charmm.pdb
+
+stop
